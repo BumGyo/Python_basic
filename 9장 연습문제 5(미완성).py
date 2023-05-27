@@ -9,15 +9,22 @@ from tkinter import *
 
 win = Tk()
 
+# 증가 버튼을 누르면 실행될 함수를 정의해준다.
 def increase():
-    count += 1
-    
+    # 라벨의 값을 정수로 바꿔서 count 변수에 넣는다.
+    count = int(lab["text"])
+    # 라벨의 값을 count에 1을 더해서 문자로 바꿔준다.
+    lab["text"] = str(count+1)
+
+# 감소 버튼을 누르면 실행될 함수를 정의해준다.
 def decrease():
-    count -= 1
+    count = int(lab["text"])
+    lab["text"] = str(count-1)
 
-
-d = Button(win, text="감소", command=decrease).grid(row=0, column=0)
-l = Label(win, text=count).grid(row=0, column=1)
-i = Button(win, text="증가", command=increase).grid(row=0, column=2)
+button_dec = Button(win, text="감소", command=decrease, width=10).grid(row=0, column=0)
+# 라벨의 grid를 한줄로 할 경우 자꾸 에러가 나서 두 문장으로 바꿨다.
+lab = Label(win, text="0", width=10)
+lab.grid(row=0, column=1)
+button_inc = Button(win, text="증가", command=increase, width=10).grid(row=0, column=2)
 
 win.mainloop()
